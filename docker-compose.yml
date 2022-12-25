@@ -3,3 +3,28 @@ version: '3'
 services:
   elf:
     build: ./elf
+  half_chain:
+    build: ./half_chain
+    volumes:
+      - ./half_chain:/web
+    ports:
+      - "48763:48763"
+  chrome:
+    image: selenium/node-chrome:4.7.2-20221219
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  selenium-hub:
+    image: selenium/hub:4.7.2-20221219
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+  half-chain-admin:
+    build: ./half_chain_admin
+    volumes:
+      - ./half_chain_admin:/half_chain_admin

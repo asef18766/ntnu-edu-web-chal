@@ -1,0 +1,4 @@
+FROM python
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+ENTRYPOINT [ "python3", "/half_chain_admin/supervisor.py" ]
