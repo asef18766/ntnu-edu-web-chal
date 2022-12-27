@@ -22,10 +22,6 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
   selenium-hub:
     image: selenium/hub:4.7.2-20221219
-    ports:
-      - "4442:4442"
-      - "4443:4443"
-      - "4444:4444"
   half-chain-admin:
     build: ./half_chain_admin
     environment:
