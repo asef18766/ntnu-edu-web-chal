@@ -18,12 +18,16 @@ async def on_message(message:discord.message.Message):
     # mute itself
     if message.author == client.user:
         return
-    warning(f"recv: {message.content}")
-    if message.content[0] == "!":
-        await client.process_commands(message)
+    if not message.guild:
+        warning(f"recv: {message.content}")
+        if message.content[0] == "!":
+            await client.process_commands(message)
+        else:
+            await message.channel.send(query(message.content))
     else:
-        await message.channel.send(query(message.content))
-
+        if message.channel.id == 1056954463862132736:
+            await message.channel.send("only accept private message >_<")
+    
 @commands.command('export', help="export the current save of dictionary")
 async def _export(ctx:Context):
     await ctx.send(export_dict())
