@@ -28,3 +28,4 @@ services:
       - SUPER_SECRET_ADMIN_TOKEN=i_am_a_super_secret_u_shall_not_know
     volumes:
       - ./half_chain_admin:/half_chain_admin
+    restart: always

@@ -26,7 +26,7 @@ def submit_comment():
     '''
     store comment into database, and return its comment id
     '''
-    add_comment(request.json["comment"])
+    add_comment(str(request.json["comment"]))
     return {"res":"success"}
 
 @app.route("/api/edit", methods=["POST"])
@@ -37,7 +37,7 @@ def edit_comment():
     print("user cookie: ", request.cookies.get("SUPER_SECRET_ADMIN_TOKEN"))
     if request.cookies.get("SUPER_SECRET_ADMIN_TOKEN") == SUPER_SECRET_ADMIN_TOKEN:
         cid = int(request.json["id"])
-        ctx = request.json["ctx"]
+        ctx = str(request.json["ctx"])
         update_comment(cid, ctx)
         return {"res":"success"}
     abort(403)
