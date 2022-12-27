@@ -9,6 +9,8 @@ services:
       - ./half_chain:/web
     ports:
       - "48763:48763"
+    environment:
+      - SUPER_SECRET_ADMIN_TOKEN=i_am_a_super_secret_u_shall_not_know
   chrome:
     image: selenium/node-chrome:4.7.2-20221219
     shm_size: 2gb
@@ -26,5 +28,7 @@ services:
       - "4444:4444"
   half-chain-admin:
     build: ./half_chain_admin
+    environment:
+      - SUPER_SECRET_ADMIN_TOKEN=i_am_a_super_secret_u_shall_not_know
     volumes:
       - ./half_chain_admin:/half_chain_admin

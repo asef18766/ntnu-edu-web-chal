@@ -1,5 +1,6 @@
 from flask import Flask, request, abort, send_from_directory
 from database.op import *
+import database.flag
 from os import getenv
 app = Flask(__name__)
 SUPER_SECRET_ADMIN_TOKEN = getenv("SUPER_SECRET_ADMIN_TOKEN", "48763")

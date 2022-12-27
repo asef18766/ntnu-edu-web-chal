@@ -34,7 +34,7 @@ def edit(cid:int, n_ctx:str):
 
 from logging import info, basicConfig, INFO
 basicConfig(level=INFO)
-sleep(5)
+sleep(10)
 info("supervisor started")
 while True:
     browser = webdriver.Remote(

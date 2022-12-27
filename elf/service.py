@@ -52,4 +52,5 @@ client.add_command(_export)
 client.add_command(_import)
 client.add_command(_reset)
 
+# please do not use it to echo any message, tkx
 client.run('MTA1MzIyMzM3NDY2MDMxMzEwOA.GHF6E3.9PXIxl1I0DNPvdUv6wuBz3EOhdHkdh5sCQeZP0')

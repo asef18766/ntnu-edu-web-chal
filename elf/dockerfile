@@ -2,10 +2,13 @@ FROM python
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 RUN useradd web && mkdir /home/web
+RUN useradd dev && mkdir /home/dev
+RUN chown -R web /home/web
+RUN chown -R dev /home/dev
+
 COPY service.py /home/web/service.py
 COPY elf_dict.py /home/web/elf_dict.py
-RUN chown -R web /home/web
-COPY dev_server.py /root/dev_server.py
+COPY dev_server.py /home/dev/dev_server.py
 COPY runner.sh /root/runner.sh
 WORKDIR /root
 ENTRYPOINT [ "/bin/bash", "/root/runner.sh" ]
